@@ -1,12 +1,15 @@
 package id.rllyhz.githubuser.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.data.User
 
 object DataUtils {
     private val users = ArrayList<User>()
 
+    @SuppressLint("Recycle")
     fun getUsers(context: Context): List<User> {
         val usernames = context.resources.getStringArray(R.array.username)
         val names = context.resources.getStringArray(R.array.name)
@@ -15,24 +18,12 @@ object DataUtils {
         val companyNames = context.resources.getStringArray(R.array.company)
         val followers = context.resources.getStringArray(R.array.followers)
         val followings = context.resources.getStringArray(R.array.following)
+        val avatars = context.resources.obtainTypedArray(R.array.avatar)
 
         for (position in usernames.indices) {
-            val avatar = when (position) {
-                0 -> R.drawable.user1
-                1 -> R.drawable.user2
-                2 -> R.drawable.user3
-                3 -> R.drawable.user4
-                4 -> R.drawable.user5
-                5 -> R.drawable.user6
-                6 -> R.drawable.user7
-                7 -> R.drawable.user8
-                8 -> R.drawable.user9
-                9 -> R.drawable.user10
-                else -> R.drawable.ic_launcher_foreground
-            }
 
             val user = User(
-                avatar,
+                avatars.getResourceId(position, R.drawable.ic_launcher_background),
                 names[position],
                 usernames[position],
                 companyNames[position],
