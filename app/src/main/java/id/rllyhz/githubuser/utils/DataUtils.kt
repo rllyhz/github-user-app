@@ -17,8 +17,22 @@ object DataUtils {
         val followings = context.resources.getStringArray(R.array.following)
 
         for (position in usernames.indices) {
+            val avatar = when (position) {
+                0 -> R.drawable.user1
+                1 -> R.drawable.user2
+                2 -> R.drawable.user3
+                3 -> R.drawable.user4
+                4 -> R.drawable.user5
+                5 -> R.drawable.user6
+                6 -> R.drawable.user7
+                7 -> R.drawable.user8
+                8 -> R.drawable.user9
+                9 -> R.drawable.user10
+                else -> R.drawable.ic_launcher_foreground
+            }
+
             val user = User(
-                usernames[position].toInt(),
+                avatar,
                 names[position],
                 usernames[position],
                 companyNames[position],

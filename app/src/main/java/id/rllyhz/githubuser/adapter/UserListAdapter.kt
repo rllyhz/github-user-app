@@ -1,10 +1,12 @@
 package id.rllyhz.githubuser.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import id.rllyhz.githubuser.data.User
 import id.rllyhz.githubuser.databinding.ItemUserBinding
 
@@ -16,7 +18,7 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
     }
 
     override fun onBindViewHolder(holder: UserListViewHolder, position: Int) {
-        holder.bind(differ.currentList[position])
+        holder.bind(differ.currentList[position], holder.itemView.context)
     }
 
     override fun getItemCount() = differ.currentList.size
@@ -25,8 +27,15 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
     inner class UserListViewHolder(private val binding: ItemUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(user: User) {
-            //
+        fun bind(user: User, context: Context) {
+            binding.apply {
+                Glide.with(context)
+                    .load(user.avatar)
+                    .into(ivItemUserAvatar)
+
+                tvItemUserName.text = user.fullname
+                tvItemUserUsername.text = user.username
+            }
         }
     }
 

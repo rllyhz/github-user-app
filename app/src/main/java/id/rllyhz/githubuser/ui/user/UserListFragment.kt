@@ -5,8 +5,11 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import id.rllyhz.githubuser.R
+import id.rllyhz.githubuser.adapter.UserListAdapter
 import id.rllyhz.githubuser.databinding.UserListFragmentBinding
+import id.rllyhz.githubuser.utils.DataUtils
 import kotlinx.android.synthetic.main.user_list_fragment.*
 
 class UserListFragment : Fragment() {
@@ -32,6 +35,18 @@ class UserListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+
+            val userListAdapter = UserListAdapter()
+            userListAdapter.differ.submitList(DataUtils.getUsers(requireContext()))
+
+            rvUserList.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                setHasFixedSize(true)
+                adapter = userListAdapter
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
