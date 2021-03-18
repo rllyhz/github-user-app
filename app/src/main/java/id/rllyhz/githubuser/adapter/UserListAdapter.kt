@@ -3,14 +3,18 @@ package id.rllyhz.githubuser.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.rllyhz.githubuser.data.User
 import id.rllyhz.githubuser.databinding.ItemUserBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
-class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>() {
+class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>(), Filterable {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolder {
         val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -55,7 +59,14 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
         }
     }
 
-    val differ = AsyncListDiffer(this, differCallback)
+    private val differ = AsyncListDiffer(this, differCallback)
+    private val allUsers: MutableList<User> = mutableListOf() // for copy
+
+    fun setUsers(users: List<User>) {
+        allUsers.clear()
+        allUsers.addAll(users)
+        differ.submitList(allUsers)
+    }
 
 
     // OnItemClick callback
@@ -64,4 +75,36 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
     fun setOnItemClickCallback(callback: ((User) -> Unit)) {
         onItemClickCallback = callback
     }
+
+
+    // Filtering
+    private val filtering: Filter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredUsers: MutableList<User> = mutableListOf()
+
+            if (constraint == null || constraint.isEmpty()) {
+                filteredUsers.addAll(allUsers)
+            } else {
+                val filterPattern = constraint.toString().toLowerCase(Locale.ROOT).trim()
+
+                for (item in differ.currentList) {
+                    if (item.username.toLowerCase(Locale.ROOT).contains(filterPattern) ||
+                        item.fullname.toLowerCase(Locale.ROOT).contains(filterPattern)
+                    ) {
+                        filteredUsers.add(item)
+                    }
+                }
+            }
+
+            val results = FilterResults()
+            results.values = filteredUsers
+            return results
+        }
+
+        override fun publishResults(p0: CharSequence?, results: FilterResults?) {
+            differ.submitList(results?.values as MutableList<User>)
+        }
+    }
+
+    override fun getFilter() = filtering
 }
