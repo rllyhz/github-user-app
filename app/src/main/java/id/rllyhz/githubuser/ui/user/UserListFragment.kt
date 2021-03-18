@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import id.rllyhz.githubuser.databinding.UserListFragmentBinding
 import kotlinx.android.synthetic.main.user_list_fragment.*
 
-class UserListFragment: Fragment() {
+class UserListFragment : Fragment() {
     private var _binding: UserListFragmentBinding? = null
     private val binding get() = _binding!!
 
