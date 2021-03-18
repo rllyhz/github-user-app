@@ -51,4 +51,15 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
     }
 
     val differ = AsyncListDiffer(this, differCallback)
+
+    // OnItemClick interface
+    interface OnItemClickListener {
+        fun onItemClick(user: User)
+    }
+
+    private var onItemClickCallback: OnItemClickListener? = null
+
+    fun setOnItemClickCallback(callback: OnItemClickListener) {
+        onItemClickCallback = callback
+    }
 }
