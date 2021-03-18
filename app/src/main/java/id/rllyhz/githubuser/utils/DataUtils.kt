@@ -2,15 +2,14 @@ package id.rllyhz.githubuser.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.data.User
 
 object DataUtils {
-    private val users = ArrayList<User>()
+    private val users: MutableList<User> = mutableListOf()
 
     @SuppressLint("Recycle")
-    fun getUsers(context: Context): List<User> {
+    fun getUsers(context: Context): MutableList<User> {
         val usernames = context.resources.getStringArray(R.array.username)
         val names = context.resources.getStringArray(R.array.name)
         val locations = context.resources.getStringArray(R.array.location)

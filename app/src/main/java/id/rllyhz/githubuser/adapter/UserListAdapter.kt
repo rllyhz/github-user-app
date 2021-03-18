@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 import id.rllyhz.githubuser.data.User
 import id.rllyhz.githubuser.databinding.ItemUserBinding
 import java.util.*
-import kotlin.collections.ArrayList
 
 class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>(), Filterable {
 
@@ -62,7 +61,7 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
     private val differ = AsyncListDiffer(this, differCallback)
     private val allUsers: MutableList<User> = mutableListOf() // for copy
 
-    fun setUsers(users: List<User>) {
+    fun setUsers(users: MutableList<User>) {
         allUsers.clear()
         allUsers.addAll(users)
         differ.submitList(allUsers)

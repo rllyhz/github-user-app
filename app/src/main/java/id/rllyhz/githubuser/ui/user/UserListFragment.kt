@@ -27,6 +27,7 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
 
         userListAdapter = UserListAdapter()
         userListAdapter?.setUsers(DataUtils.getUsers(requireContext()))
+
         userListAdapter?.setOnItemClickCallback {
             val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment()
             findNavController().navigate(action)
