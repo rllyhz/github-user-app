@@ -4,10 +4,10 @@ import android.content.Context
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.data.User
 
-class DataUtils(private val context: Context) {
+object DataUtils {
     private val users = ArrayList<User>()
 
-    fun getUsers(): List<User> {
+    fun getUsers(context: Context): List<User> {
         val usernames = context.resources.getStringArray(R.array.username)
         val names = context.resources.getStringArray(R.array.name)
         val locations = context.resources.getStringArray(R.array.location)
