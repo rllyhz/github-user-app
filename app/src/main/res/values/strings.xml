@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Github User</string>
+    <string name="menu_item_about_me_text">About Me</string>
 </resources>
