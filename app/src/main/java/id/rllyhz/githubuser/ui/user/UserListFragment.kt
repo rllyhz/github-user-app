@@ -75,8 +75,8 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-    private fun initSvFilterUser(searchViewMenuItem: MenuItem) {
-        svFilterUser = searchViewMenuItem.actionView as SearchView
+    private fun initSvFilterUser(searchMenuItem: MenuItem) {
+        svFilterUser = searchMenuItem.actionView as SearchView
         svFilterUser.setOnQueryTextListener(this)
     }
 
