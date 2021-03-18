@@ -31,6 +31,10 @@ class UserDetailFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
+
+        val searchMenuItem = menu.findItem(R.id.menu_item_search)
+        searchMenuItem.isVisible = false
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 

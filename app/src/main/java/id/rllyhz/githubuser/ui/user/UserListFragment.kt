@@ -2,7 +2,9 @@ package id.rllyhz.githubuser.ui.user
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,9 +14,11 @@ import id.rllyhz.githubuser.databinding.UserListFragmentBinding
 import id.rllyhz.githubuser.utils.DataUtils
 import kotlinx.android.synthetic.main.user_list_fragment.*
 
-class UserListFragment : Fragment() {
+class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: UserListFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var svFilterUser: SearchView
 
     private var userListAdapter: UserListAdapter? = null
 
@@ -56,6 +60,7 @@ class UserListFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
+        initSvFilterUser(menu.findItem(R.id.menu_item_search))
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -68,6 +73,20 @@ class UserListFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun initSvFilterUser(searchViewMenuItem: MenuItem) {
+        svFilterUser = searchViewMenuItem.actionView as SearchView
+        svFilterUser.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        Toast.makeText(requireContext(), query, Toast.LENGTH_SHORT).show()
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return false
     }
 
     override fun onDestroy() {
