@@ -36,8 +36,13 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
                 tvItemUserName.text = user.fullname
                 tvItemUserUsername.text = user.username
             }
+
+            itemView.setOnClickListener {
+                onItemClickCallback?.let { it(user) }
+            }
         }
     }
+
 
     // Callback for DifferUtil
     private val differCallback = object : DiffUtil.ItemCallback<User>() {
@@ -52,14 +57,11 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
 
     val differ = AsyncListDiffer(this, differCallback)
 
-    // OnItemClick interface
-    interface OnItemClickListener {
-        fun onItemClick(user: User)
-    }
 
-    private var onItemClickCallback: OnItemClickListener? = null
+    // OnItemClick callback
+    private var onItemClickCallback: ((User) -> Unit)? = null
 
-    fun setOnItemClickCallback(callback: OnItemClickListener) {
+    fun setOnItemClickCallback(callback: ((User) -> Unit)) {
         onItemClickCallback = callback
     }
 }

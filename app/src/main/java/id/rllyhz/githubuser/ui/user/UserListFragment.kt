@@ -16,10 +16,18 @@ class UserListFragment : Fragment() {
     private var _binding: UserListFragmentBinding? = null
     private val binding get() = _binding!!
 
+    private var userListAdapter: UserListAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setHasOptionsMenu(true)
+
+        userListAdapter = UserListAdapter()
+        userListAdapter?.differ?.submitList(DataUtils.getUsers(requireContext()))
+        userListAdapter?.setOnItemClickCallback {
+            val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment()
+            findNavController().navigate(action)
+        }
     }
 
     override fun onCreateView(
@@ -37,9 +45,6 @@ class UserListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-
-            val userListAdapter = UserListAdapter()
-            userListAdapter.differ.submitList(DataUtils.getUsers(requireContext()))
 
             rvUserList.apply {
                 layoutManager = LinearLayoutManager(requireContext())
@@ -68,5 +73,6 @@ class UserListFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        userListAdapter = null
     }
 }
