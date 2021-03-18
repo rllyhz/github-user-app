@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import id.rllyhz.githubuser.databinding.UserDetailFragmentBinding
-import id.rllyhz.githubuser.databinding.UserListFragmentBinding
 
 class UserDetailFragment : Fragment() {
     private var _binding: UserDetailFragmentBinding? = null
