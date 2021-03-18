@@ -32,11 +32,6 @@ class UserListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        btn_click_me.setOnClickListener {
-            val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment()
-            findNavController().navigate(action)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
