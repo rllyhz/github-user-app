@@ -35,7 +35,7 @@ class AboutMeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = AboutMeFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
