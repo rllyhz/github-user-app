@@ -41,5 +41,5 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
         }
     }
 
-    private val differ = AsyncListDiffer(this, differCallback)
+    val differ = AsyncListDiffer(this, differCallback)
 }
