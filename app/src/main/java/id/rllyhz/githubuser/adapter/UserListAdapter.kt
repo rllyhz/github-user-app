@@ -86,7 +86,7 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
             } else {
                 val filterPattern = constraint.toString().toLowerCase(Locale.ROOT).trim()
 
-                for (item in differ.currentList) {
+                for (item in allUsers) {
                     if (item.username.toLowerCase(Locale.ROOT).contains(filterPattern) ||
                         item.fullname.toLowerCase(Locale.ROOT).contains(filterPattern)
                     ) {
