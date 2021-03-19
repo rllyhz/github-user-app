@@ -7,8 +7,8 @@
     <fragment
         android:id="@+id/userListFragment"
         android:name="id.rllyhz.githubuser.ui.user.UserListFragment"
-        android:label="user_list_fragment"
-        tools:layout="@layout/user_list_fragment" >
+        android:label="Github Users"
+        tools:layout="@layout/user_list_fragment">
         <action
             android:id="@+id/action_userListFragment_to_userDetailFragment"
             app:destination="@id/userDetailFragment"
@@ -20,8 +20,8 @@
     <fragment
         android:id="@+id/userDetailFragment"
         android:name="id.rllyhz.githubuser.ui.user.UserDetailFragment"
-        android:label="user_detail_fragment"
-        tools:layout="@layout/user_detail_fragment" >
+        android:label="User Details"
+        tools:layout="@layout/user_detail_fragment">
         <argument
             android:name="user"
             app:argType="id.rllyhz.githubuser.data.User" />
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/aboutMeFragment"
         android:name="id.rllyhz.githubuser.ui.about.AboutMeFragment"
-        android:label="about_me_fragment"
+        android:label="About Me"
         tools:layout="@layout/about_me_fragment" />
     <action android:id="@+id/action_global_aboutMeFragment" app:destination="@id/aboutMeFragment" />
 </navigation>

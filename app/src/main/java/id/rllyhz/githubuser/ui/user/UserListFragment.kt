@@ -1,7 +1,12 @@
 package id.rllyhz.githubuser.ui.user
 
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -61,8 +66,12 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
-        initSvFilterUser(menu.findItem(R.id.menu_item_search))
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        initSvFilterUser(menu.findItem(R.id.menu_item_search))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

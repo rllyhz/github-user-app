@@ -2,7 +2,12 @@ package id.rllyhz.githubuser.ui.user
 
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.MenuInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -48,11 +53,13 @@ class UserDetailFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
         val searchMenuItem = menu.findItem(R.id.menu_item_search)
         searchMenuItem.isVisible = false
-
-        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
