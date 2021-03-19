@@ -14,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.databinding.UserDetailFragmentBinding
 import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
@@ -47,7 +49,17 @@ class UserDetailFragment : Fragment() {
 
         binding.apply {
             args.user.apply {
-                tvUserDetailName.text = fullname
+                mtvUserDetailUsername.text = username
+                mtvUserDetailName.text = fullname
+                mtvUserDetailCompanyName.text = companyName
+                mtvUserDetailRepositoryCount.text = totalRepositories
+                mtvUserDetailTotalFollowers.text = totalFollowers
+                mtvUserDetailTotalFollowings.text = totalFollowings
+
+                Glide.with(root)
+                    .load(avatar)
+                    .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+                    .into(sivUserDetailAvatar)
             }
         }
 
