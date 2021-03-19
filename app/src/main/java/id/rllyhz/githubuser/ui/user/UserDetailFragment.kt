@@ -19,7 +19,7 @@ import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
 
 class UserDetailFragment : Fragment() {
     private var _binding: UserDetailFragmentBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding!! // like in the documentation approach
 
     private val args: UserDetailFragmentArgs by navArgs()
 

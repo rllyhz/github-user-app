@@ -13,7 +13,7 @@ import id.rllyhz.githubuser.databinding.AboutMeFragmentBinding
 
 class AboutMeFragment : Fragment() {
     private var _binding: AboutMeFragmentBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding!! // like in the documentation approach
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

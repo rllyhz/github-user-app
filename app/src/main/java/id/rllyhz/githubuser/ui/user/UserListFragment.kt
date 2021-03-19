@@ -22,7 +22,7 @@ import id.rllyhz.githubuser.utils.DataUtils
 
 class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: UserListFragmentBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding!! // like in the documentation approach
 
     private lateinit var svFilterUser: SearchView
 
