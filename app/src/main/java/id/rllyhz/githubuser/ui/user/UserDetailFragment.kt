@@ -1,16 +1,21 @@
 package id.rllyhz.githubuser.ui.user
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.databinding.UserDetailFragmentBinding
+import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
 
 class UserDetailFragment : Fragment() {
     private var _binding: UserDetailFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private val args: UserDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +34,18 @@ class UserDetailFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            args.user.apply {
+                tvUserDetailName.text = fullname
+            }
+        }
+
+        Log.d("UserDetail", args.user.toString())
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
 
@@ -45,8 +62,7 @@ class UserDetailFragment : Fragment() {
                 true
             }
             R.id.menu_item_about_me -> {
-                val action =
-                    UserDetailFragmentDirections.actionUserDetailFragmentToAboutMeFragment()
+                val action = AboutMeFragmentDirections.actionGlobalAboutMeFragment()
                 findNavController().navigate(action)
                 true
             }

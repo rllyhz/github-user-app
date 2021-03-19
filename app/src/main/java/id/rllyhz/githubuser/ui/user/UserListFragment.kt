@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.adapter.UserListAdapter
 import id.rllyhz.githubuser.databinding.UserListFragmentBinding
+import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
 import id.rllyhz.githubuser.utils.DataUtils
 
 class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
@@ -29,7 +30,7 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
         userListAdapter?.setUsers(DataUtils.getUsers(requireContext()))
 
         userListAdapter?.setOnItemClickCallback {
-            val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment()
+            val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(it)
             findNavController().navigate(action)
         }
     }
@@ -67,7 +68,7 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_item_about_me -> {
-                val action = UserListFragmentDirections.actionUserListFragmentToAboutMeFragment()
+                val action = AboutMeFragmentDirections.actionGlobalAboutMeFragment()
                 findNavController().navigate(action)
                 true
             }

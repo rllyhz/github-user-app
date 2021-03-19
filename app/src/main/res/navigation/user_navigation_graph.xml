@@ -16,22 +16,20 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_userListFragment_to_aboutMeFragment"
-            app:destination="@id/aboutMeFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailFragment"
         android:name="id.rllyhz.githubuser.ui.user.UserDetailFragment"
         android:label="user_detail_fragment"
         tools:layout="@layout/user_detail_fragment" >
-        <action
-            android:id="@+id/action_userDetailFragment_to_aboutMeFragment"
-            app:destination="@id/aboutMeFragment" />
+        <argument
+            android:name="user"
+            app:argType="id.rllyhz.githubuser.data.User" />
     </fragment>
     <fragment
         android:id="@+id/aboutMeFragment"
         android:name="id.rllyhz.githubuser.ui.about.AboutMeFragment"
         android:label="about_me_fragment"
         tools:layout="@layout/about_me_fragment" />
+    <action android:id="@+id/action_global_aboutMeFragment" app:destination="@id/aboutMeFragment" />
 </navigation>
