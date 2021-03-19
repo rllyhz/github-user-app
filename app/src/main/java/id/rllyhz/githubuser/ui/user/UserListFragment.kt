@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.adapter.UserListAdapter
@@ -30,6 +31,7 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        (requireActivity() as AppCompatActivity).setupActionBarWithNavController(findNavController())
 
         userListAdapter = UserListAdapter()
         userListAdapter?.setUsers(DataUtils.getUsers(requireContext()))
@@ -45,8 +47,6 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
-
         _binding = UserListFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }

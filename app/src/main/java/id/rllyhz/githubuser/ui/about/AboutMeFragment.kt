@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import id.rllyhz.githubuser.databinding.AboutMeFragmentBinding
 
 class AboutMeFragment : Fragment() {
@@ -18,7 +19,7 @@ class AboutMeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (requireActivity() as AppCompatActivity).setupActionBarWithNavController(findNavController())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupActionBarWithNavController
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.databinding.UserDetailFragmentBinding
 import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
@@ -26,6 +27,7 @@ class UserDetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
+        (requireActivity() as AppCompatActivity).setupActionBarWithNavController(findNavController())
     }
 
     override fun onCreateView(
@@ -33,8 +35,6 @@ class UserDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         _binding = UserDetailFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
