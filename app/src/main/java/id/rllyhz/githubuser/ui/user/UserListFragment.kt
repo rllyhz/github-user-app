@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.rllyhz.githubuser.R
@@ -19,6 +20,7 @@ import id.rllyhz.githubuser.adapter.UserListAdapter
 import id.rllyhz.githubuser.databinding.UserListFragmentBinding
 import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
 import id.rllyhz.githubuser.utils.DataUtils
+import kotlinx.android.synthetic.main.user_list_fragment.*
 
 class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: UserListFragmentBinding? = null
@@ -31,7 +33,6 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        (requireActivity() as AppCompatActivity).setupActionBarWithNavController(findNavController())
 
         userListAdapter = UserListAdapter()
         userListAdapter?.setUsers(DataUtils.getUsers(requireContext()))
@@ -54,6 +55,8 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupToolbar()
+
         binding.apply {
 
             rvUserList.apply {
@@ -64,28 +67,27 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
+    private fun setupToolbar() {
+        binding.apply {
+            toolbar.inflateMenu(R.menu.main_menu)
+            NavigationUI.setupWithNavController(toolbar, findNavController())
+            setupSearchMenuItem(toolbar.menu)
 
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
-        initSvFilterUser(menu.findItem(R.id.menu_item_search))
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_item_about_me -> {
-                val action = AboutMeFragmentDirections.actionGlobalAboutMeFragment()
-                findNavController().navigate(action)
-                true
+            toolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_item_about_me -> {
+                        val action = AboutMeFragmentDirections.actionGlobalAboutMeFragment()
+                        findNavController().navigate(action)
+                        true
+                    }
+                    else -> false
+                }
             }
-            else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun initSvFilterUser(searchMenuItem: MenuItem) {
+    private fun setupSearchMenuItem(menu: Menu) {
+        val searchMenuItem = menu.findItem(R.id.menu_item_search)
         svFilterUser = searchMenuItem.actionView as SearchView
         svFilterUser.setOnQueryTextListener(this)
         svFilterUser.imeOptions = EditorInfo.IME_ACTION_DONE

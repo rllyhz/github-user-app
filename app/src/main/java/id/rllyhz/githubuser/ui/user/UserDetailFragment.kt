@@ -12,10 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.databinding.UserDetailFragmentBinding
 import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
+import kotlinx.android.synthetic.main.user_list_fragment.*
 
 class UserDetailFragment : Fragment() {
     private var _binding: UserDetailFragmentBinding? = null
@@ -27,7 +29,6 @@ class UserDetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
-        (requireActivity() as AppCompatActivity).setupActionBarWithNavController(findNavController())
     }
 
     override fun onCreateView(
@@ -42,6 +43,8 @@ class UserDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupToolbar()
+
         binding.apply {
             args.user.apply {
                 tvUserDetailName.text = fullname
@@ -51,30 +54,28 @@ class UserDetailFragment : Fragment() {
         Log.d("UserDetail", args.user.toString())
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
+    private fun setupToolbar() {
+        binding.apply {
+            toolbar.inflateMenu(R.menu.main_menu)
+            prepareToolbarMenu(toolbar.menu)
+            NavigationUI.setupWithNavController(toolbar, findNavController())
+
+            toolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_item_about_me -> {
+                        val action = AboutMeFragmentDirections.actionGlobalAboutMeFragment()
+                        findNavController().navigate(action)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
+    private fun prepareToolbarMenu(menu: Menu) {
         val searchMenuItem = menu.findItem(R.id.menu_item_search)
         searchMenuItem.isVisible = false
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                findNavController().navigateUp()
-                true
-            }
-            R.id.menu_item_about_me -> {
-                val action = AboutMeFragmentDirections.actionGlobalAboutMeFragment()
-                findNavController().navigate(action)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     override fun onDestroy() {

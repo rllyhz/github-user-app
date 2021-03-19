@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
+import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.databinding.AboutMeFragmentBinding
+import kotlinx.android.synthetic.main.user_list_fragment.*
 
 class AboutMeFragment : Fragment() {
     private var _binding: AboutMeFragmentBinding? = null
@@ -19,7 +22,6 @@ class AboutMeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
-        (requireActivity() as AppCompatActivity).setupActionBarWithNavController(findNavController())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -39,5 +41,15 @@ class AboutMeFragment : Fragment() {
     ): View {
         _binding = AboutMeFragmentBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
+        NavigationUI.setupWithNavController(toolbar, findNavController())
     }
 }
