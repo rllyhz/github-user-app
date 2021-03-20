@@ -52,7 +52,7 @@
                 android:layout_height="240dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="68dp"
-                android:contentDescription="@string/app_name"
+                android:contentDescription="@string/content_description_image"
                 android:transitionName="@string/transition_name_item_user_avatar"
                 app:shapeAppearanceOverlay="@style/ShapeableImageCircular"
                 tools:srcCompat="@drawable/user1" />
@@ -174,7 +174,7 @@
                     android:id="@+id/iv_user_detail_username_icon"
                     android:layout_width="@dimen/user_detail_icon_size"
                     android:layout_height="@dimen/user_detail_icon_size"
-                    android:contentDescription="@string/app_name"
+                    android:contentDescription="@string/content_description_icon"
                     android:src="@drawable/ic_user"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -195,7 +195,7 @@
                     android:layout_width="@dimen/user_detail_icon_size"
                     android:layout_height="@dimen/user_detail_icon_size"
                     android:layout_marginTop="16dp"
-                    android:contentDescription="@string/app_name"
+                    android:contentDescription="@string/content_description_icon"
                     android:src="@drawable/ic_office_building"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_user_detail_username_icon" />
@@ -216,7 +216,7 @@
                     android:layout_width="@dimen/user_detail_icon_size"
                     android:layout_height="@dimen/user_detail_icon_size"
                     android:layout_marginTop="16dp"
-                    android:contentDescription="@string/app_name"
+                    android:contentDescription="@string/content_description_icon"
                     android:src="@drawable/ic_folder"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_user_detail_company_icon" />

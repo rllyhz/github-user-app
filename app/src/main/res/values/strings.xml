@@ -26,4 +26,9 @@
     <string name="user_detail_followers_count_text">240</string>
     <string name="user_detail_followings_label">Followings</string>
     <string name="user_detail_followings_count_text">210</string>
+
+
+    <string name="content_description_image">Image Preview</string>
+    <string name="content_description_icon">Icon Preview</string>
+
 </resources>
