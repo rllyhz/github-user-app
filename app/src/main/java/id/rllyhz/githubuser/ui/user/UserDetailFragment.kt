@@ -1,36 +1,35 @@
 package id.rllyhz.githubuser.ui.user
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.util.Log
-import android.view.MenuInflater
 import android.view.Menu
-import android.view.MenuItem
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.databinding.UserDetailFragmentBinding
 import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
-import kotlinx.android.synthetic.main.user_list_fragment.*
 
 class UserDetailFragment : Fragment() {
     private var _binding: UserDetailFragmentBinding? = null
     private val binding get() = _binding!! // like in the documentation approach
 
-    private val args: UserDetailFragmentArgs by navArgs()
+    private val args: UserDetailFragmentArgs by navArgs() // using safeArgs so that it'll be compile time safety
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
+
+        sharedElementEnterTransition = TransitionInflater.from(requireContext())
+            .inflateTransition(android.R.transition.move)
     }
 
     override fun onCreateView(
@@ -59,6 +58,7 @@ class UserDetailFragment : Fragment() {
                 Glide.with(root)
                     .load(avatar)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+                    .apply(RequestOptions().centerCrop())
                     .into(sivUserDetailAvatar)
             }
         }

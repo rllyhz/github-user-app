@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.data.User
 import id.rllyhz.githubuser.databinding.ItemUserBinding
 import java.util.*
@@ -34,14 +38,28 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
             binding.apply {
                 Glide.with(context)
                     .load(user.avatar)
+                    .apply(RequestOptions.placeholderOf(R.drawable.ic_launcher_background))
+                    .apply(RequestOptions().centerCrop())
                     .into(ivItemUserAvatar)
 
                 tvItemUserName.text = user.fullname
                 tvItemUserUsername.text = user.username
-            }
 
-            itemView.setOnClickListener {
-                onItemClickCallback?.let { it(user) }
+                // set unique transition name for each
+                ivItemUserAvatar.transitionName =
+                    "${itemView.context.getString(R.string.transition_name_item_user_avatar)}_$adapterPosition"
+                tvItemUserName.transitionName =
+                    "${itemView.context.getString(R.string.transition_name_item_user_name)}_$adapterPosition"
+
+                // create the extras for sharedElement
+                val extrasForSharedElement = FragmentNavigatorExtras(
+                    ivItemUserAvatar to itemView.context.getString(R.string.transition_name_item_user_avatar),
+                    tvItemUserName to itemView.context.getString(R.string.transition_name_item_user_name)
+                )
+
+                itemView.setOnClickListener {
+                    onItemClickCallback?.let { it(user, extrasForSharedElement) }
+                }
             }
         }
     }
@@ -69,9 +87,9 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
 
 
     // OnItemClick callback
-    private var onItemClickCallback: ((User) -> Unit)? = null
+    private var onItemClickCallback: ((User, FragmentNavigator.Extras) -> Unit)? = null
 
-    fun setOnItemClickCallback(callback: ((User) -> Unit)) {
+    fun setOnItemClickCallback(callback: ((User, FragmentNavigator.Extras) -> Unit)) {
         onItemClickCallback = callback
     }
 

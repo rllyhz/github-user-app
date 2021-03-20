@@ -2,25 +2,21 @@ package id.rllyhz.githubuser.ui.user
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.adapter.UserListAdapter
 import id.rllyhz.githubuser.databinding.UserListFragmentBinding
 import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
 import id.rllyhz.githubuser.utils.DataUtils
-import kotlinx.android.synthetic.main.user_list_fragment.*
 
 class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: UserListFragmentBinding? = null
@@ -37,9 +33,11 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
         userListAdapter = UserListAdapter()
         userListAdapter?.setUsers(DataUtils.getUsers(requireContext()))
 
-        userListAdapter?.setOnItemClickCallback {
-            val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(it)
-            findNavController().navigate(action)
+        userListAdapter?.setOnItemClickCallback { user, navigatorExtras ->
+            val action =
+                UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(user)
+
+            findNavController().navigate(action, navigatorExtras)
         }
     }
 
@@ -49,6 +47,13 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = UserListFragmentBinding.inflate(inflater, container, false)
+
+        // optimization recyclerview for sharedElement
+        postponeEnterTransition()
+        binding.rvUserList.doOnPreDraw {
+            startPostponedEnterTransition()
+        }
+
         return binding.root
     }
 

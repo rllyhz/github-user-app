@@ -8,4 +8,8 @@
     <!-- Menu Item -->
     <string name="menu_item_about_me_text">About Me</string>
     <string name="menu_item_search_text">Search</string>
+
+    <!-- Transition Names -->
+    <string name="transition_name_item_user_avatar">item_user_avatar</string>
+    <string name="transition_name_item_user_name">item_user_name</string>
 </resources>

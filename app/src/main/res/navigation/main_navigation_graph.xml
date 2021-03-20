@@ -11,11 +11,7 @@
         tools:layout="@layout/user_list_fragment">
         <action
             android:id="@+id/action_userListFragment_to_userDetailFragment"
-            app:destination="@id/userDetailFragment"
-            app:enterAnim="@anim/fade_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out" />
+            app:destination="@id/userDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/userDetailFragment"
