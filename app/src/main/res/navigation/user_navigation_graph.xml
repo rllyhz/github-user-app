@@ -31,5 +31,11 @@
         android:name="id.rllyhz.githubuser.ui.about.AboutMeFragment"
         android:label="About Me"
         tools:layout="@layout/about_me_fragment" />
-    <action android:id="@+id/action_global_aboutMeFragment" app:destination="@id/aboutMeFragment" />
+    <action
+        android:id="@+id/action_global_aboutMeFragment"
+        app:destination="@id/aboutMeFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
 </navigation>
