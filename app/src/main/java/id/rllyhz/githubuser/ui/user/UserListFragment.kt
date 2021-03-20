@@ -109,7 +109,7 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
+        _binding = null // to avoid memory leaks
         userListAdapter = null
     }
 }

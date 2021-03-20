@@ -92,6 +92,6 @@ class UserDetailFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
+        _binding = null // to avoid memory leaks
     }
 }
