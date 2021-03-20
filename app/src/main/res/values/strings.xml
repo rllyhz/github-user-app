@@ -19,9 +19,10 @@
     <string name="transition_name_item_user_name">item_user_name</string>
 
     <!-- User Detail Layout Dummy Data -->
-    <string name="user_detail_username_label">Username</string>
-    <string name="user_detail_company_name_label">Company Name</string>
-    <string name="user_detail_repository_count_label">123</string>
+    <string name="user_detail_username_label">Username :</string>
+    <string name="user_detail_company_name_label">Company Name :</string>
+    <string name="user_detail_repository_count_label">Repositories :</string>
+    <string name="user_detail_repository_count_text">240</string>
     <string name="user_detail_followers_label">Followers</string>
     <string name="user_detail_followers_count_text">240</string>
     <string name="user_detail_followings_label">Followings</string>

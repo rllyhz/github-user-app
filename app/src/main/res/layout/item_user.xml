@@ -43,15 +43,16 @@
             style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/grey"
             app:layout_constraintStart_toStartOf="@+id/tv_item_user_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_user_name"
             tools:text="@string/item_user_username" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/item_user_icon_size"
+            android:layout_height="@dimen/item_user_icon_size"
             android:layout_marginTop="12dp"
             android:contentDescription="@string/content_description_icon"
             app:layout_constraintStart_toStartOf="@+id/tv_item_user_username"
@@ -64,6 +65,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxWidth="180dp"
+            android:maxLines="1"
+            android:textColor="@color/grey"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             tools:text="@string/item_user_company_name" />

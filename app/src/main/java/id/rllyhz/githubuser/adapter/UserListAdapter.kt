@@ -44,6 +44,7 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
 
                 tvItemUserName.text = user.fullname
                 tvItemUserUsername.text = user.username
+                mtvItemUserCompanyName.text = user.companyName
 
                 // set unique transition name for each
                 ivItemUserAvatar.transitionName =
