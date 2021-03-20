@@ -9,7 +9,21 @@
     <string name="menu_item_about_me_text">About Me</string>
     <string name="menu_item_search_text">Search</string>
 
+    <!-- User Item Layout Dummy Data -->
+    <string name="item_user_company_name">Gojek Indonesia</string>
+    <string name="item_user_username">rllyhz</string>
+    <string name="item_user_name">Rully Ihza Mahendra</string>
+
     <!-- Transition Names -->
     <string name="transition_name_item_user_avatar">item_user_avatar</string>
     <string name="transition_name_item_user_name">item_user_name</string>
+
+    <!-- User Detail Layout Dummy Data -->
+    <string name="user_detail_username_label">Username</string>
+    <string name="user_detail_company_name_label">Company Name</string>
+    <string name="user_detail_repository_count_label">123</string>
+    <string name="user_detail_followers_label">Followers</string>
+    <string name="user_detail_followers_count_text">240</string>
+    <string name="user_detail_followings_label">Followings</string>
+    <string name="user_detail_followings_count_text">210</string>
 </resources>

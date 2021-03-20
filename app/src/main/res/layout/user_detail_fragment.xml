@@ -92,14 +92,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="210"
-                        android:textColor="?attr/colorSecondary" />
+                        android:textColor="?attr/colorSecondary"
+                        tools:text="@string/user_detail_followings_count_text" />
 
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Followings" />
+                        android:text="@string/user_detail_followings_label" />
 
                 </LinearLayout>
 
@@ -127,14 +127,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="240"
-                        android:textColor="?attr/colorSecondary" />
+                        android:textColor="?attr/colorSecondary"
+                        tools:text="@string/user_detail_followers_count_text" />
 
                     <com.google.android.material.textview.MaterialTextView
                         style="@style/TextAppearance.AppCompat.Medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Followers" />
+                        android:text="@string/user_detail_followers_label" />
 
                 </LinearLayout>
 
@@ -185,7 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Username"
+                    android:text="@string/user_detail_username_label"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_user_detail_username_icon"
                     app:layout_constraintLeft_toRightOf="@id/iv_user_detail_username_icon"
                     app:layout_constraintTop_toTopOf="@+id/iv_user_detail_username_icon" />
@@ -206,7 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Company Name"
+                    android:text="@string/user_detail_company_name_label"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_user_detail_company_icon"
                     app:layout_constraintLeft_toRightOf="@id/iv_user_detail_company_icon"
                     app:layout_constraintTop_toTopOf="@+id/iv_user_detail_company_icon" />
@@ -227,7 +227,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="123"
+                    android:text="@string/user_detail_repository_count_label"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_user_detail_repository_count_icon"
                     app:layout_constraintLeft_toRightOf="@id/iv_user_detail_repository_count_icon"
                     app:layout_constraintTop_toTopOf="@+id/iv_user_detail_repository_count_icon" />
