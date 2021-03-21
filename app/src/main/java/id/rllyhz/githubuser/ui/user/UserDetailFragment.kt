@@ -54,6 +54,7 @@ class UserDetailFragment : Fragment() {
                 mtvUserDetailRepositoryCount.text = totalRepositories
                 mtvUserDetailTotalFollowers.text = totalFollowers
                 mtvUserDetailTotalFollowings.text = totalFollowings
+                mtvUserDetailLocation.text = location
 
                 Glide.with(root)
                     .load(avatar)
