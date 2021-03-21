@@ -115,6 +115,8 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener,
         userListAdapter = null
     }
 
+
+    // Feedback status implementations
     override fun onError() {
         requireActivity().runOnUiThread {
             binding.mtvUserListFeedbackMessage.text =

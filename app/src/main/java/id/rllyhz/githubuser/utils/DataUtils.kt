@@ -6,10 +6,10 @@ import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.data.User
 
 object DataUtils {
-    private val users: MutableList<User> = mutableListOf()
-
     @SuppressLint("Recycle")
     fun getUsers(context: Context): MutableList<User> {
+        val users: MutableList<User> = mutableListOf()
+
         val usernames = context.resources.getStringArray(R.array.username)
         val names = context.resources.getStringArray(R.array.name)
         val locations = context.resources.getStringArray(R.array.location)

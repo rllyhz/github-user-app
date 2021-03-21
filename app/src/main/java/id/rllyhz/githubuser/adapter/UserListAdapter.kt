@@ -124,8 +124,8 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
 
         override fun publishResults(p0: CharSequence?, results: FilterResults?) {
 
-            val users: List<User> = if (results?.values != null)
-                results.values as List<User>
+            val users: MutableList<User> = if (results?.values != null)
+                results.values as MutableList<User>
             else
                 ArrayList()
 
