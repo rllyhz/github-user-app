@@ -39,4 +39,8 @@
     <string name="about_me_instagram_text">rllyhz</string>
     <string name="about_me_copyright_text">© All rights reserved.</string>
 
+    <string name="linkedin_link">https://www.linkedin.com/in/rully-ihza-mahendra-275a591a5</string>
+    <string name="instagram_link">https://www.instagram.com/rllyhz/</string>
+    <string name="github_link">https://www.github.com/rllyhz/</string>
+
 </resources>

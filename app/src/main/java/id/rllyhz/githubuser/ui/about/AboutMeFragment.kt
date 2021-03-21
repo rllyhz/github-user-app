@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -37,9 +38,24 @@ class AboutMeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupToolbar()
+
+        binding.apply {
+            fabAboutMeLikeBtn.setOnClickListener { showToast("Thank you!") }
+            cardviewAboutMeLinkedin.setOnClickListener { openLink(requireContext().getString(R.string.linkedin_link)) }
+            cardviewAboutMeGithub.setOnClickListener { openLink(requireContext().getString(R.string.github_link)) }
+            cardviewAboutMeInstagram.setOnClickListener { openLink(requireContext().getString(R.string.instagram_link)) }
+        }
     }
 
     private fun setupToolbar() {
         NavigationUI.setupWithNavController(toolbar, findNavController())
+    }
+
+    private fun openLink(url: String) {
+
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }
