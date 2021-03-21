@@ -120,7 +120,8 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
         }
 
         override fun publishResults(p0: CharSequence?, results: FilterResults?) {
-            differ.submitList(results?.values as MutableList<User>)
+            val users = results?.values as List<User>
+            differ.submitList(users)
         }
     }
 

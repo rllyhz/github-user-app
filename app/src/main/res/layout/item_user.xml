@@ -29,7 +29,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_item_user_name"
-            style="@style/ItemUserLarge"
+            style="@style/ItemUserTextLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -40,7 +40,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_item_user_username"
-            style="@style/ItemUserSmall"
+            style="@style/ItemUserTextSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/grey"
@@ -60,7 +60,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mtv_item_user_company_name"
-            style="@style/ItemUserSmall.Ellipsize"
+            style="@style/ItemUserTextSmall.Ellipsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
