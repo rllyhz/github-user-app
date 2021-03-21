@@ -10,41 +10,46 @@
         android:id="@+id/appbar_about_me"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleTextAppearance="@style/ExpandedTitleTextHidden"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            tools:title="@string/app_name">
 
             <ImageView
+                android:id="@+id/iv_about_me_creator_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
                 android:contentDescription="@string/content_description_image"
                 android:scaleType="fitCenter"
-                android:src="@drawable/image_creator"
-                app:layout_collapseMode="parallax" />
+                app:layout_collapseMode="parallax"
+                tools:srcCompat="@color/grey_light" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bg_title_toolbar_height"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg_title_toolbar" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                android:elevation="4dp"
-                android:fitsSystemWindows="true"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:contentInsetEndWithActions="0dp"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 tools:title="@string/app_name" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
@@ -67,17 +72,28 @@
                     android:layout_height="wrap_content"
                     android:padding="24dp">
 
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/mtv_about_me_name"
+                        style="@style/AboutMeTextBig"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rully Ihza Mahendra"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <ImageView
                         android:id="@+id/iv_about_me_calendar_icon"
                         android:layout_width="@dimen/about_me_icon_size"
                         android:layout_height="@dimen/about_me_icon_size"
+                        android:layout_marginTop="24dp"
                         android:contentDescription="@string/content_description_icon"
                         android:src="@drawable/ic_calendar"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/mtv_about_me_name" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/UserDetailCardTextRegular"
+                        style="@style/AboutMeTextRegular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -96,7 +112,7 @@
                         app:layout_constraintTop_toBottomOf="@id/iv_about_me_calendar_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/UserDetailCardTextRegular"
+                        style="@style/AboutMeTextRegular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -115,7 +131,7 @@
                         app:layout_constraintTop_toBottomOf="@id/iv_about_me_work_icon" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/UserDetailCardTextRegular"
+                        style="@style/AboutMeTextRegular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -153,7 +169,7 @@
                         app:srcCompat="@drawable/image_linkedin_logo" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/UserDetailCardTextRegular"
+                        style="@style/AboutMeTextRegular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
@@ -171,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardElevation="2dp">
@@ -192,7 +208,7 @@
                         app:srcCompat="@drawable/image_github_logo" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/UserDetailCardTextRegular"
+                        style="@style/AboutMeTextRegular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
@@ -210,7 +226,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardElevation="2dp">
@@ -231,7 +247,7 @@
                         app:srcCompat="@drawable/image_instagram_logo" />
 
                     <com.google.android.material.textview.MaterialTextView
-                        style="@style/UserDetailCardTextRegular"
+                        style="@style/AboutMeTextRegular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
@@ -252,7 +268,7 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_about_me_like_btn"

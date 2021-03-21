@@ -9,4 +9,6 @@
     <dimen name="about_me_avatar_size">20dp</dimen>
     <dimen name="about_me_icon_size">32dp</dimen>
     <dimen name="about_me_image_logo_size">60dp</dimen>
+
+    <dimen name="bg_title_toolbar_height">90dp</dimen>
 </resources>

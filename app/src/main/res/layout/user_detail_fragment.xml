@@ -223,16 +223,11 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/mtv_user_detail_company_name"
-                    style="@style/UserDetailCardTextRegular.Colored"
+                    style="@style/UserDetailCardTextRegular.Colored.Ellipsize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:ellipsize="end"
-                    android:gravity="start"
-                    android:maxWidth="240dp"
-                    android:maxLines="2"
                     android:text="@string/item_user_company_name"
-                    android:textColor="?attr/colorSecondary"
                     app:layout_constraintLeft_toLeftOf="@id/mtv_user_detail_company_name_label"
                     app:layout_constraintTop_toBottomOf="@id/iv_user_detail_company_icon" />
 
@@ -259,7 +254,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/mtv_user_detail_location"
-                    style="@style/UserDetailCardTextRegular.Colored"
+                    style="@style/UserDetailCardTextRegular.Colored.Ellipsize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
