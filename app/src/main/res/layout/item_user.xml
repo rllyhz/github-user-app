@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="8dp"
+    android:layout_marginHorizontal="16dp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="4dp"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="2dp">
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,8 +17,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_item_user_avatar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/item_user_avatar_size"
+            android:layout_height="@dimen/item_user_avatar_size"
             android:contentDescription="@string/content_description_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,10 +29,10 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_item_user_name"
-            style="@style/TextAppearance.AppCompat.Large"
+            style="@style/ItemUserLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16sp"
+            android:layout_marginStart="16dp"
             app:layout_constraintStart_toEndOf="@+id/iv_item_user_avatar"
             app:layout_constraintTop_toTopOf="@+id/iv_item_user_avatar"
             tools:text="@string/item_user_name"
@@ -40,20 +40,19 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_item_user_username"
-            style="@style/TextAppearance.AppCompat.Small"
+            style="@style/ItemUserSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:textColor="@color/grey"
             app:layout_constraintStart_toStartOf="@+id/tv_item_user_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_user_name"
             tools:text="@string/item_user_username" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/iv_item_user_company_icon"
             android:layout_width="@dimen/item_user_icon_size"
             android:layout_height="@dimen/item_user_icon_size"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="14dp"
             android:contentDescription="@string/content_description_icon"
             app:layout_constraintStart_toStartOf="@+id/tv_item_user_username"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_user_username"
@@ -61,17 +60,13 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/mtv_item_user_company_name"
-            style="@style/TextAppearance.AppCompat.Small"
+            style="@style/ItemUserSmall.Ellipsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:ellipsize="end"
-            android:gravity="start"
-            android:maxWidth="180dp"
-            android:maxLines="1"
-            android:textColor="@color/grey"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_item_user_company_icon"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_user_company_icon"
+            app:layout_constraintTop_toTopOf="@id/iv_item_user_company_icon"
             tools:text="@string/item_user_company_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
