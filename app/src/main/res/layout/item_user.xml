@@ -19,6 +19,7 @@
             android:id="@+id/iv_item_user_avatar"
             android:layout_width="@dimen/item_user_avatar_size"
             android:layout_height="@dimen/item_user_avatar_size"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/content_description_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

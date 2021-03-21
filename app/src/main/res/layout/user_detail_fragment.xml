@@ -53,6 +53,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="68dp"
                 android:contentDescription="@string/content_description_image"
+                android:scaleType="centerCrop"
                 android:transitionName="@string/transition_name_item_user_avatar"
                 app:shapeAppearanceOverlay="@style/ShapeableImageRounded"
                 tools:srcCompat="@drawable/user1" />
