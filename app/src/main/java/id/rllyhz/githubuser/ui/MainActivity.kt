@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setTheme(R.style.Theme_GithubUser) // remove splash theme, for easily showing splashscreen if there is no process in background
-        // this is recomendation in Android Developers channel
+        // this is the recomendation from Android Developers channel
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // this app dosn't support dark mode
 
         setContentView(binding.root)
