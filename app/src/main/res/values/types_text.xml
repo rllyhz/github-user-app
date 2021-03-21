@@ -70,4 +70,9 @@
         <item name="android:textColor">@color/grey</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
+
+    <style name="FeedbackTextMedium" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/grey_500</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
 </resources>
