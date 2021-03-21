@@ -45,4 +45,7 @@
     <string name="instagram_link">https://www.instagram.com/rllyhz/</string>
     <string name="github_link">https://www.github.com/rllyhz/</string>
 
+    <string name="feedback_empty_text">Sorry, the result not found!</string>
+    <string name="feedback_error_text">Sorry, something went wrong.</string>
+
 </resources>

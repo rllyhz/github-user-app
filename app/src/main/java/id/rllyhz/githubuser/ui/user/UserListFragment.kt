@@ -18,7 +18,8 @@ import id.rllyhz.githubuser.databinding.UserListFragmentBinding
 import id.rllyhz.githubuser.ui.about.AboutMeFragmentDirections
 import id.rllyhz.githubuser.utils.DataUtils
 
-class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
+class UserListFragment : Fragment(), SearchView.OnQueryTextListener,
+    UserListAdapter.FilteringStatus {
     private var _binding: UserListFragmentBinding? = null
     private val binding get() = _binding!! // like in the documentation approach
 
@@ -39,6 +40,7 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
 
             findNavController().navigate(action, navigatorExtras)
         }
+        userListAdapter?.setFilteringCallback(this)
     }
 
     override fun onCreateView(
@@ -111,5 +113,74 @@ class UserListFragment : Fragment(), SearchView.OnQueryTextListener {
         super.onDestroy()
         _binding = null // to avoid memory leaks
         userListAdapter = null
+    }
+
+    override fun onError() {
+        requireActivity().runOnUiThread {
+            binding.mtvUserListFeedbackMessage.text =
+                resources.getString(R.string.feedback_error_text)
+
+            showFeedbackMessage(true)
+            showRecyclerview(false)
+        }
+    }
+
+    override fun onSuccess() {
+        requireActivity().runOnUiThread {
+            showLoading(false)
+            showFeedbackMessage(false)
+            showRecyclerview(true)
+        }
+    }
+
+    override fun onEmpty() {
+        requireActivity().runOnUiThread {
+            binding.mtvUserListFeedbackMessage.text =
+                resources.getString(R.string.feedback_empty_text)
+
+            showFeedbackMessage(true)
+            showLoading(false)
+            showRecyclerview(false)
+        }
+    }
+
+    override fun onLoading() {
+        requireActivity().runOnUiThread {
+            showLoading(true)
+            showFeedbackMessage(false)
+        }
+    }
+
+    private fun showLoading(state: Boolean) {
+        requireActivity().runOnUiThread {
+            binding.cardviewUserListProggressContainer.apply {
+                visibility = if (state)
+                    View.VISIBLE
+                else
+                    View.GONE
+            }
+        }
+    }
+
+    private fun showRecyclerview(state: Boolean) {
+        requireActivity().runOnUiThread {
+            binding.rvUserList.apply {
+                visibility = if (state)
+                    View.VISIBLE
+                else
+                    View.GONE
+            }
+        }
+    }
+
+    private fun showFeedbackMessage(state: Boolean) {
+        requireActivity().runOnUiThread {
+            binding.mtvUserListFeedbackMessage.apply {
+                visibility = if (state)
+                    View.VISIBLE
+                else
+                    View.GONE
+            }
+        }
     }
 }

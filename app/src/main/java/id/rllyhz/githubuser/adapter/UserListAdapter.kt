@@ -16,6 +16,7 @@ import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.data.User
 import id.rllyhz.githubuser.databinding.ItemUserBinding
 import java.util.*
+import kotlin.collections.ArrayList
 
 class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>(), Filterable {
 
@@ -98,6 +99,8 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
     // Filtering
     private val filtering: Filter = object : Filter() {
         override fun performFiltering(constraint: CharSequence?): FilterResults {
+            filteringCallback?.onLoading()
+
             val filteredUsers: MutableList<User> = mutableListOf()
 
             if (constraint == null || constraint.isEmpty()) {
@@ -120,10 +123,34 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserListViewHolder>
         }
 
         override fun publishResults(p0: CharSequence?, results: FilterResults?) {
-            val users = results?.values as List<User>
+
+            val users: List<User> = if (results?.values != null)
+                results.values as List<User>
+            else
+                ArrayList()
+
+            if (users.isEmpty())
+                filteringCallback?.onEmpty()
+            else
+                filteringCallback?.onSuccess()
+
             differ.submitList(users)
         }
     }
 
     override fun getFilter() = filtering
+
+    // Filtering Callbacks
+    interface FilteringStatus {
+        fun onError()
+        fun onSuccess()
+        fun onEmpty()
+        fun onLoading()
+    }
+
+    private var filteringCallback: FilteringStatus? = null
+
+    fun setFilteringCallback(callback: FilteringStatus) {
+        filteringCallback = callback
+    }
 }
