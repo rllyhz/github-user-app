@@ -237,13 +237,45 @@
                     app:layout_constraintTop_toBottomOf="@id/iv_user_detail_company_icon" />
 
                 <ImageView
+                    android:id="@+id/iv_user_detail_location_icon"
+                    android:layout_width="@dimen/user_detail_icon_size"
+                    android:layout_height="@dimen/user_detail_icon_size"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="@string/content_description_icon"
+                    app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_company_icon"
+                    app:layout_constraintTop_toBottomOf="@id/mtv_user_detail_company_name"
+                    app:srcCompat="@drawable/ic_location" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_user_detail_location_label"
+                    style="@style/UserDetailCardTextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/user_detail_location_label"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_user_detail_location_icon"
+                    app:layout_constraintLeft_toRightOf="@id/iv_user_detail_location_icon"
+                    app:layout_constraintTop_toTopOf="@+id/iv_user_detail_location_icon" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mtv_user_detail_location"
+                    style="@style/UserDetailCardTextRegular.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/item_user_location"
+                    android:textColor="?attr/colorSecondary"
+                    app:layout_constraintLeft_toLeftOf="@id/mtv_user_detail_location_label"
+                    app:layout_constraintTop_toBottomOf="@id/iv_user_detail_location_icon" />
+
+                <ImageView
                     android:id="@+id/iv_user_detail_repository_count_icon"
                     android:layout_width="@dimen/user_detail_icon_size"
                     android:layout_height="@dimen/user_detail_icon_size"
                     android:layout_marginTop="16dp"
                     android:contentDescription="@string/content_description_icon"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mtv_user_detail_company_name"
+                    app:layout_constraintLeft_toLeftOf="@id/iv_user_detail_location_icon"
+                    app:layout_constraintTop_toBottomOf="@id/mtv_user_detail_location"
                     app:srcCompat="@drawable/ic_folder" />
 
                 <com.google.android.material.textview.MaterialTextView
