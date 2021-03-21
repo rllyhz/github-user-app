@@ -1,8 +1,9 @@
 package id.rllyhz.githubuser.ui.about
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import id.rllyhz.githubuser.R
 import id.rllyhz.githubuser.databinding.AboutMeFragmentBinding
 import kotlinx.android.synthetic.main.user_list_fragment.*
@@ -52,7 +52,8 @@ class AboutMeFragment : Fragment() {
     }
 
     private fun openLink(url: String) {
-
+        (requireActivity() as AppCompatActivity)
+            .startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 
     private fun showToast(message: String) {
