@@ -1,31 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.about.AboutMeFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        tools:title="@string/app_name" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_about_me"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
 
-    <TextView
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:contentDescription="@string/content_description_image"
+                android:src="@drawable/image_creator" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="4dp"
+                android:fitsSystemWindows="true"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                tools:title="@string/app_name" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:cardElevation="2dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:id="@+id/iv_about_me_calendar_icon"
+                        android:layout_width="@dimen/about_me_icon_size"
+                        android:layout_height="@dimen/about_me_icon_size"
+                        android:contentDescription="@string/content_description_icon"
+                        android:src="@drawable/ic_calendar"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/UserDetailCardTextRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/about_me_birth_date_text"
+                        app:layout_constraintLeft_toRightOf="@id/iv_about_me_calendar_icon"
+                        app:layout_constraintTop_toTopOf="@id/iv_about_me_calendar_icon" />
+
+                    <ImageView
+                        android:id="@+id/iv_about_me_work_icon"
+                        android:layout_width="@dimen/about_me_icon_size"
+                        android:layout_height="@dimen/about_me_icon_size"
+                        android:layout_marginTop="8dp"
+                        android:contentDescription="@string/content_description_icon"
+                        android:src="@drawable/ic_work"
+                        app:layout_constraintLeft_toLeftOf="@id/iv_about_me_calendar_icon"
+                        app:layout_constraintTop_toBottomOf="@id/iv_about_me_calendar_icon" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/UserDetailCardTextRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/about_me_work_text"
+                        app:layout_constraintLeft_toRightOf="@id/iv_about_me_work_icon"
+                        app:layout_constraintTop_toTopOf="@id/iv_about_me_work_icon" />
+
+                    <ImageView
+                        android:id="@+id/iv_about_me_email_icon"
+                        android:layout_width="@dimen/about_me_icon_size"
+                        android:layout_height="@dimen/about_me_icon_size"
+                        android:layout_marginTop="8dp"
+                        android:contentDescription="@string/content_description_icon"
+                        android:src="@drawable/ic_email"
+                        app:layout_constraintLeft_toLeftOf="@id/iv_about_me_work_icon"
+                        app:layout_constraintTop_toBottomOf="@id/iv_about_me_work_icon" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/UserDetailCardTextRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/about_me_email_text"
+                        app:layout_constraintLeft_toRightOf="@id/iv_about_me_email_icon"
+                        app:layout_constraintTop_toTopOf="@id/iv_about_me_email_icon" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardview_about_me_linkedin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardElevation="2dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_about_me_linkedin_logo"
+                        android:layout_width="@dimen/about_me_image_logo_size"
+                        android:layout_height="@dimen/about_me_image_logo_size"
+                        android:contentDescription="@string/content_description_image"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/image_linkedin_logo" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/UserDetailCardTextRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@string/about_me_linkedin_text"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_about_me_linkedin_logo"
+                        app:layout_constraintLeft_toRightOf="@id/iv_about_me_linkedin_logo"
+                        app:layout_constraintTop_toTopOf="@id/iv_about_me_linkedin_logo" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardview_about_me_github"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardElevation="2dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_about_me_github_logo"
+                        android:layout_width="@dimen/about_me_image_logo_size"
+                        android:layout_height="@dimen/about_me_image_logo_size"
+                        android:contentDescription="@string/content_description_image"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/image_github_logo" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/UserDetailCardTextRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@string/about_me_github_text"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_about_me_github_logo"
+                        app:layout_constraintLeft_toRightOf="@id/iv_about_me_github_logo"
+                        app:layout_constraintTop_toTopOf="@id/iv_about_me_github_logo" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardview_about_me_instagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardElevation="2dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_about_me_instagram_logo"
+                        android:layout_width="@dimen/about_me_image_logo_size"
+                        android:layout_height="@dimen/about_me_image_logo_size"
+                        android:contentDescription="@string/content_description_image"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/image_instagram_logo" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/UserDetailCardTextRegular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@string/about_me_instagram_text"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_about_me_instagram_logo"
+                        app:layout_constraintLeft_toRightOf="@id/iv_about_me_instagram_logo"
+                        app:layout_constraintTop_toTopOf="@id/iv_about_me_instagram_logo" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/about_me_copyright_text" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About Me"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        android:layout_margin="16dp"
+        android:contentDescription="@string/content_description_image"
+        app:elevation="2dp"
+        app:layout_anchor="@id/appbar_about_me"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_fav_outlined" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

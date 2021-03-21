@@ -28,8 +28,15 @@
     <string name="user_detail_followings_label">Followings</string>
     <string name="user_detail_followings_count_text">210</string>
 
-
     <string name="content_description_image">Image Preview</string>
     <string name="content_description_icon">Icon Preview</string>
+
+    <string name="about_me_email_text">rullyihza00@gmail.com</string>
+    <string name="about_me_work_text">Mahasiswa</string>
+    <string name="about_me_birth_date_text">29 September 1999</string>
+    <string name="about_me_linkedin_text">Rully Ihza Mahendra</string>
+    <string name="about_me_github_text">rllyhz</string>
+    <string name="about_me_instagram_text">rllyhz</string>
+    <string name="about_me_copyright_text">© All rights reserved.</string>
 
 </resources>

@@ -5,4 +5,8 @@
 
     <dimen name="user_detail_avatar_size">280dp</dimen>
     <dimen name="user_detail_icon_size">24dp</dimen>
+
+    <dimen name="about_me_avatar_size">20dp</dimen>
+    <dimen name="about_me_icon_size">32dp</dimen>
+    <dimen name="about_me_image_logo_size">60dp</dimen>
 </resources>
