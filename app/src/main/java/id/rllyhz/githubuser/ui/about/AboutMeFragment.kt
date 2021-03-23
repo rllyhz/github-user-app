@@ -51,7 +51,7 @@ class AboutMeFragment : Fragment() {
                 .apply(RequestOptions().centerCrop())
                 .into(ivAboutMeCreatorAvatar)
 
-            fabAboutMeLikeBtn.setOnClickListener { showToast("Thank you!") }
+            fabAboutMeLikeBtn.setOnClickListener { showToast() }
             cardviewAboutMeLinkedin.setOnClickListener { openLink(requireContext().getString(R.string.linkedin_link)) }
             cardviewAboutMeGithub.setOnClickListener { openLink(requireContext().getString(R.string.github_link)) }
             cardviewAboutMeInstagram.setOnClickListener { openLink(requireContext().getString(R.string.instagram_link)) }
@@ -67,7 +67,7 @@ class AboutMeFragment : Fragment() {
             .startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    private fun showToast() {
+        Toast.makeText(requireContext(), "Thank you!", Toast.LENGTH_SHORT).show()
     }
 }

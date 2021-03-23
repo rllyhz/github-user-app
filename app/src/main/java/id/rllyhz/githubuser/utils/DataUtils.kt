@@ -35,6 +35,9 @@ object DataUtils {
             users.add(user)
         }
 
+        // avoiding memory leaks
+        avatars.recycle()
+
         return users
     }
 }

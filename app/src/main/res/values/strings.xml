@@ -47,5 +47,6 @@
 
     <string name="feedback_empty_text">Sorry, the result not found!</string>
     <string name="feedback_error_text">Sorry, something went wrong.</string>
+    <string name="about_me_name_text">Rully Ihza Mahendra</string>
 
 </resources>
