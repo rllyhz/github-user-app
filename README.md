@@ -11,6 +11,35 @@ This project built for submission 1 of Dicoding Academy's course, titled as **Le
 - Filtering list with feedback status message and loading UI
 - Detail From Gighub User List
 
+## Demo
+
+<h3 align="center">
+  Splash Screen
+</h3>
+<p align="center">
+    <img src="assets/splash_screen.jpg"
+        alt="Splash Screen"
+        width="200" />
+</p>
+
+<h3 align="center">
+  Home
+</h3>
+<p align="center">
+    <img src="assets/home_preview.jpg"
+        alt="Home Screen"
+        width="200" />
+</p>
+
+<h3 align="center">
+  User Detail
+</h3>
+<p align="center">
+    <img src="assets/user_detail_preview.jpg"
+        alt="User Detail Screen"
+        width="200" />
+</p>
+
 
 ## LICENSE
 
