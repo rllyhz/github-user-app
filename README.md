@@ -1,6 +1,7 @@
-# Github User App
+# Dicoding Submission: Belajar Fundamental Aplikasi Android (Submission 1)
 
 This project built for submission 1 of Dicoding Academy's course, titled as **Learning Android Fundamental**
+This project **gets 5 start** 🎉🎉
 
 ## Features
 
