@@ -4,6 +4,11 @@
 This project built for submission 1 of Dicoding Academy's course, titled as **Learning Android Fundamental** </br>
 This project **gets 5 stars** 🎉🎉
 
+You can clone this repo and import to your Android Studio
+```
+  https://github.com/rllyhz/github-user-app.git
+```
+
 ## Features
 
 - Navigation Component
